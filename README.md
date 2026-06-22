@@ -18,7 +18,7 @@ cd setup
 ./archinstall.sh
 ```
 
-- Configure your Disk Settings to your liking
+- Configure the disk configuration to your liking
 - Create your user account
 - Run the installation
 - After the installation completes, reboot into your new Arch Linux system

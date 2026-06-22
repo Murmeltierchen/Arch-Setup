@@ -154,7 +154,6 @@
     "ntp": true,
     "packages": [
         "ark",
-        "blueman",
         "cpupower",
         "docker",
         "docker-compose",
@@ -181,6 +180,7 @@
         "kdenlive",
         "kid3-qt",
         "kitty",
+        "linux-zen-headers",
         "lutris",
         "mangohud",
         "lib32-mangohud",

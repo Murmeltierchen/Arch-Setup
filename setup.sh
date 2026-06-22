@@ -22,6 +22,7 @@ aur=(
     makemkv
     nohang
     protonup-qt
+    qview
     teamspeak
     ttf-ms-wincorefonts
     vesktop
@@ -78,6 +79,11 @@ case "$gpu_choice" in
     N|n)
         _sendStatus "Installing NVIDIA drivers (DKMS) and Vulkan support..."
         sudo pacman -S --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils egl-wayland nvidia-settings cuda
+        sudo mkdir -p /etc/mkinitcpio.conf.d
+        sudo echo 'MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)' > /etc/mkinitcpio.conf.d/nvidia.conf
+        CURRENT_CMD=$(sudo cat /etc/kernel/cmdline)
+        sudo echo "$CURRENT_CMD nvidia_drm.modeset=1 nvidia_drm.fbdev=1" > /etc/kernel/cmdline
+        sudo mkinitcpio -P
         ;;
     S|s)
         _sendStatus "Skipping graphics driver installation."
@@ -138,7 +144,7 @@ nvm install --lts
 corepack enable pnpm
 
 ## Tree-Sitter CLI
-npm install -g tree-sitter-cli
+sudo npm install -g tree-sitter-cli
 
 # ----------------------------------------------------------
 
